@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import com.example.market2.SaleGridFragment
 import com.example.market2.adapter.CollectionPagerAdapter
 import com.example.market2.databinding.FragmentSpeetSaleBinding
-import com.example.market2.ui.sales.SalesFragment
 
 class SpeetSaleFragment : Fragment() {
 
@@ -57,6 +55,13 @@ class SpeetSaleFragment : Fragment() {
         mFragment.addFrag(SaleGridFragment(),"44")
 
         viewPager.adapter = mFragment
+
+
+
+        binding.basket.setOnClickListener(View.OnClickListener {
+            val saleBottomSheet = SaleBottomSheet()
+            saleBottomSheet.show(parentFragmentManager,"blabla")
+        })
 
 
 

@@ -20,5 +20,6 @@
     <color name="secondaryTextColor">#000000</color>
 
     <color name="red">#FF1100</color>
+    <color name="blue_btn">#0077EE</color>
     <color name="stoke_color">#E0E0E0</color>
 </resources>

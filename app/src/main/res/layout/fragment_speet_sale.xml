@@ -11,26 +11,14 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TabLayout.Colored"
         app:tabMode="scrollable">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tab2" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tab1" />
-
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="right"
         android:orientation="horizontal">
 
@@ -54,6 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.6"
+            android:gravity="center"
             android:orientation="vertical">
 
             <Button
@@ -173,7 +162,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="5dp">
 
             <EditText
                 android:layout_width="0dp"
@@ -181,7 +170,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="10"
                 android:background="@drawable/grey_stoke"
-                android:inputType="numberSigned|number" />
+                android:inputType="numberSigned|number"
+                android:textCursorDrawable="@color/red"/>
 
             <Button
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -201,7 +191,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingRight="5dp"
             android:paddingBottom="15dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -231,11 +221,9 @@
                     android:textSize="14dp"
                     android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
             <Button
-                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:id="@+id/basket"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="4"
