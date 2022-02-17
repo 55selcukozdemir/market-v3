@@ -1,4 +1,4 @@
-package com.example.market2.ui.speetsale
+package com.example.market2.ui.speetsale.bottom
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,44 +28,14 @@ class SaleBottomSheet : BottomSheetDialogFragment(){
 
         recyclerView.layoutManager  = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL,false)
 
-        recyclerView.adapter = RecyclerAdapter(arrayOf(
+        recyclerView.adapter = RecyclerBottomAdapter(arrayOf(
             "özddsemirsd",
             "özdedsmir",
             "özdedsmir",
             "özdemdsir",
             "özdedsmir",
             "özdedsmir",
-            "özdedsmir",
-            "özdemir",
-            "özdfedsmir",
-            "özdefdmir",
-            "özdefdmir",
-            "özdemir",
-            "özdnemir",
-            "özdbnemir",
-            "özbdemir",
-            "özdytemir",
-            "özdeukmir",
-            "özdjuemir",
-            "özçdemir",
-            "özdelımir",
-            "özdeıkmir",
-            "özdkjuylemir",
-            "özdeuımir",
-            "özdemyteir",
-            "özdeeyrjmir",
             "özdfhgemir",
-            "özdkjlemir",
-            "özdelmir",
-            "özdşemir",
-            "özdıuoemir",
-            "özdpoıemir",
-            "özdğpoıemir",
-            "özdyuygemir",
-            "özdefhmir",
-            "özdehdfmir",
-            "özdehdfmir",
-
             ))
 
         return view

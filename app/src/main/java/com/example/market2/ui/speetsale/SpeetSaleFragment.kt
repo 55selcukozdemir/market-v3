@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.market2.adapter.CollectionPagerAdapter
 import com.example.market2.databinding.FragmentSpeetSaleBinding
+import com.example.market2.ui.speetsale.bottom.SaleBottomSheet
+import com.example.market2.ui.speetsale.productsale.SaleGridFragment
 
 class SpeetSaleFragment : Fragment() {
 

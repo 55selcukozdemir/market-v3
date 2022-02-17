@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.speetsale.SaleBottomSheet">
+    tools:context=".ui.speetsale.bottom.SaleBottomSheet">
 
     <androidx.recyclerview.widget.RecyclerView
         android:paddingTop="5dp"

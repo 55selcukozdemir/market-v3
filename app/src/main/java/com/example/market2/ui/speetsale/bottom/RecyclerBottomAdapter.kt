@@ -1,4 +1,4 @@
-package com.example.market2.ui.speetsale
+package com.example.market2.ui.speetsale.bottom
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.market2.R
 
-class RecyclerAdapter(private val dataSet: Array<String>) :
-    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerBottomAdapter(private val dataSet: Array<String>) :
+    RecyclerView.Adapter<RecyclerBottomAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
