@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.stockstatus.StockStatusFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tab2" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tab1" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10">
+            <androidx.viewpager.widget.ViewPager
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+            </androidx.viewpager.widget.ViewPager>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:orientation="vertical">
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="0"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="1"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="2"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="3"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="4"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="5"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="6"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="7"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="8"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:insetTop="3dp"
+                android:insetBottom="3dp"
+                android:text="9"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="vertical"
+        android:layout_weight="2">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="10"
+                android:background="@drawable/grey_stoke"
+                android:inputType="numberSigned|number" />
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="tara"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="10"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto"
+                    android:textAlignment="viewStart"
+                    android:text="Ülker Çikolatalı Gofret"
+                    android:textSize="16dp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textAlignment="viewStart"
+                    android:text="Sipariş Özeti : 155.25"
+                    android:textSize="14dp"
+                    android:textColor="@color/black" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Sepet"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>
