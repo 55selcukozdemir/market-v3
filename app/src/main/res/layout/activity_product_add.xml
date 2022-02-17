@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.stockstatus.ProductAddActivity"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Ürün Adı"
+        android:background="@drawable/grey_stoke"
+        android:layout_marginBottom="5dp"
+        android:textSize="14dp"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:hint="Barkod"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="10"/>
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="3"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="TARA"
+            android:layout_marginLeft="10dp"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:hint="Satış Fiyatı"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:hint="Alış Fiyatı"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="1"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:hint="Ürün Adet"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:hint="Eklenen Ürün Adeti"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="1"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:hint="Ürün Adet"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:hint="Ürün Adet"
+            android:background="@drawable/grey_stoke"
+            android:textSize="14dp"
+            android:layout_weight="1"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/imageselect" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="8dp"
+            android:text="Barkod kısmını doldurarak SİL GETİR DÜZENLE işlemleri yapabilirsiniz. SİL ve DÜZENLE işlemleri ni yapmak için GETİR ile barkod'dan bilgileri getiriniz."/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="15dp">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginRight="5dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Sİl"
+                android:textColor="@color/red"
+                app:rippleColor="@color/red" />
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginLeft="5dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Ekle"
+                android:textColor="@color/blue_btn"
+                app:rippleColor="@color/blue_btn" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="15dp"
+            android:paddingBottom="5dp">
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginRight="5dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Getir"
+                android:textColor="#FF5B05"
+                app:rippleColor="#FF5B05" />
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="4"
+                android:layout_marginLeft="5dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Düzenle"
+                android:textColor="@color/primaryDarkColor"
+                app:rippleColor="@color/primaryDarkColor" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+</LinearLayout>

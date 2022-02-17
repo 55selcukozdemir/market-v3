@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.market2.databinding.FragmentSalesBinding
 
 class SalesFragment : Fragment() {
@@ -33,6 +34,11 @@ class SalesFragment : Fragment() {
         galleryViewModel.text.observe(viewLifecycleOwner) {
             //textView.text = it
         }
+
+        val recycleradapter = binding.salesRecycler
+        recycleradapter.layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
+        recycleradapter.adapter = SalesRecyclerAdapter()
+
         return root
     }
 

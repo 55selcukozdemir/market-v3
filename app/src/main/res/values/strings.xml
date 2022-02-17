@@ -7,9 +7,25 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="speet_sale">Hızlı Satış</string>
+    <string name="menu_sales">Satışlar</string>
+    <string name="menu_stock">Stok Durumu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="array_catecory">
+        <item>sigara</item>
+        <item>çikolata</item>
+        <item>içecekler</item>
+        <item>temizlik</item>
+        <item>mutfak</item>
+    </string-array>
+    <string-array name="array_units">
+        <item>kg</item>
+        <item>adet</item>
+        <item>litre</item>
+        <item>paket</item>
+    </string-array>
 </resources>
+

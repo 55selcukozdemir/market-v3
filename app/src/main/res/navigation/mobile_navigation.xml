@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_speet_sale">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_speet_sale"
         android:name="com.example.market2.ui.speetsale.SpeetSaleFragment"
-        android:label="@string/menu_home"
+        android:label="@string/speet_sale"
         tools:layout="@layout/fragment_stock_status" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_sales"
         android:name="com.example.market2.ui.sales.SalesFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_sales"
         tools:layout="@layout/fragment_sales" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_stock"
         android:name="com.example.market2.ui.stockstatus.StockStatusFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_stock"
         tools:layout="@layout/fragment_speet_sale" />
 </navigation>
