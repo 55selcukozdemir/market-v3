@@ -9,34 +9,38 @@
     android:padding="15dp">
 
     <EditText
+        android:id="@+id/a_name_tv"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="Ürün Adı"
-        android:background="@drawable/grey_stoke"
         android:layout_marginBottom="5dp"
-        android:textSize="14dp"/>
+        android:background="@drawable/grey_stoke"
+        android:hint="Ürün Adı"
+        android:textSize="14dp" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp">
 
         <EditText
+            android:id="@+id/a_barcode_tv"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:hint="Barkod"
+            android:layout_weight="10"
             android:background="@drawable/grey_stoke"
-            android:textSize="14dp"
-            android:layout_weight="10"/>
+            android:hint="Barkod"
+            android:textSize="14dp" />
 
         <Button
+            android:id="@+id/sales_scan_btn"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="3"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="TARA"
-            android:layout_marginLeft="10dp"/>
+            android:text="TARA" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -46,21 +50,24 @@
         android:layout_marginBottom="5dp">
 
         <EditText
+            android:id="@+id/a_saleprice_tv"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/grey_stoke"
             android:hint="Satış Fiyatı"
-            android:background="@drawable/grey_stoke"
-            android:textSize="14dp"
-            android:layout_weight="1"/>
+            android:textSize="14dp" />
+
         <EditText
+            android:id="@+id/a_purchaseprice_tv"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/grey_stoke"
             android:hint="Alış Fiyatı"
-            android:background="@drawable/grey_stoke"
-            android:textSize="14dp"
-            android:layout_weight="1"/>
+            android:textSize="14dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -69,21 +76,24 @@
         android:layout_marginBottom="5dp">
 
         <EditText
+            android:id="@+id/a_add_tv"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginRight="5dp"
-            android:hint="Ürün Adet"
+            android:layout_weight="1"
             android:background="@drawable/grey_stoke"
-            android:textSize="14dp"
-            android:layout_weight="1"/>
+            android:hint="Ürün Adet"
+            android:textSize="14dp" />
+
         <EditText
+            android:id="@+id/a_add_product_tv"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:hint="Eklenen Ürün Adeti"
+            android:layout_weight="1"
             android:background="@drawable/grey_stoke"
-            android:textSize="14dp"
-            android:layout_weight="1"/>
+            android:hint="Eklenen Ürün Adeti"
+            android:textSize="14dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -93,7 +103,7 @@
         android:layout_marginBottom="5dp">
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/a_category_s"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginRight="5dp"
@@ -103,7 +113,7 @@
             android:layout_weight="1"/>
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/a_unit_s"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
@@ -118,7 +128,9 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="160dp">
+
         <ImageView
+            android:id="@+id/a_product_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/imageselect" />
@@ -147,22 +159,25 @@
             android:layout_marginBottom="5dp">
 
             <Button
+                android:id="@+id/a_delete_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="4"
                 android:layout_marginRight="5dp"
+                android:layout_weight="4"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="Sİl"
                 android:textColor="@color/red"
                 app:rippleColor="@color/red" />
+
             <Button
+                android:id="@+id/a_add_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="4"
                 android:layout_marginLeft="5dp"
+                android:layout_weight="4"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="Ekle"
@@ -179,22 +194,25 @@
             android:paddingBottom="5dp">
 
             <Button
+                android:id="@+id/a_get_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="4"
                 android:layout_marginRight="5dp"
+                android:layout_weight="4"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="Getir"
                 android:textColor="#FF5B05"
                 app:rippleColor="#FF5B05" />
+
             <Button
+                android:id="@+id/a_update_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="4"
                 android:layout_marginLeft="5dp"
+                android:layout_weight="4"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="Düzenle"
