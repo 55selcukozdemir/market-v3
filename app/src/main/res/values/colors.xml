@@ -22,4 +22,9 @@
     <color name="red">#FF1100</color>
     <color name="blue_btn">#0077EE</color>
     <color name="stoke_color">#E0E0E0</color>
+
+
+    <color name="ucrop_color_toolbar">#2e7d32</color>
+    <color name="ucrop_color_statusbar">#60ad5e</color>
+    <color name="ucrop_color_widget_active">#005005</color>
 </resources>
