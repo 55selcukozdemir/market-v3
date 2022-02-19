@@ -28,6 +28,10 @@
         <entry key="app/src/main/res/layout/stock_recycler.xml" value="0.32563405797101447" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.2546875" />
         <entry key="app/src/main/res/menu/main.xml" value="0.2546875" />
+        <entry key="app/src/main/res/menu/sales_menu.xml" value="0.13958333333333334" />
+        <entry key="app/src/main/res/menu/speed_menu.xml" value="0.40260416666666665" />
+        <entry key="app/src/main/res/menu/stock_menu.xml" value="0.40260416666666665" />
+        <entry key="app/src/main/res/xml/searchable.xml" value="0.13958333333333334" />
       </map>
     </option>
   </component>

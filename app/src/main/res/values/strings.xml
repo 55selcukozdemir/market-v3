@@ -12,6 +12,8 @@
     <string name="menu_stock">Stok Durumu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="product_add">Ürün Ekle</string>
+    <string name="product_search">Arama</string>
 
 
     <string-array name="array_catecory">

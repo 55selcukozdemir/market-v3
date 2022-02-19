@@ -1,12 +1,14 @@
 package com.example.market2.ui.speetsale
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
+import com.example.market2.R
 import com.example.market2.adapter.CollectionPagerAdapter
 import com.example.market2.databinding.FragmentSpeetSaleBinding
 import com.example.market2.ui.speetsale.bottom.SaleBottomSheet
@@ -43,7 +45,11 @@ class SpeetSaleFragment : Fragment() {
             //textView.text = it
         }
 
-        val newFragment1 = Fragment()
+        setHasOptionsMenu(true)
+
+
+
+
 
         val viewPager = binding.viewpager
         val tapBar = binding.tabLayout
@@ -68,6 +74,26 @@ class SpeetSaleFragment : Fragment() {
 
 
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.speed_menu, menu)
+        val menuItem = menu.findItem(R.id.speed_search)
+        val searchView: SearchView = menuItem.actionView as SearchView
+        searchView.queryHint = "Arama"
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+
+        })
+
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 
