@@ -27,10 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarMain.toolbar)
-        
-        supportActionBar?.addOnMenuVisibilityListener {
-            Toast.makeText(this, "sfdsfsd", Toast.LENGTH_SHORT).show()
-        }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)

@@ -2,14 +2,14 @@ package com.example.market2.database
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
 import com.example.market2.database.model.ProductEntry
 import com.example.market2.database.model.ProductM
 
-class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(contexts, DATABASE_NAME ,null, DATABASE_VERSION) {
+class ProductDatabaseDBHelper(val contexts: Context?) :
+    SQLiteOpenHelper(contexts, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         const val DATABASE_VERSION = 2
@@ -28,7 +28,7 @@ class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(context
                 "${ProductEntry.UNIT} TEXT," +
                 "${ProductEntry.IMAGE} BLOB)"
 
-    private val SQL_DELETE_ENTRIES =  "DROP TABLE IF EXISTS ${ProductEntry.TABLE_NAME}"
+    private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${ProductEntry.TABLE_NAME}"
 
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -45,7 +45,7 @@ class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(context
     }
 
 
-    fun putProduct(mProdut: ProductM){
+    fun putProduct(mProdut: ProductM) {
 
         val db = this.writableDatabase
         val prodoctVales = ContentValues().apply {
@@ -54,14 +54,13 @@ class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(context
             put(ProductEntry.SALE_PRICE, mProdut.sale_price)
             put(ProductEntry.PURCHASE_PRICE, mProdut.purchase_price)
             put(ProductEntry.NUMBER_OF_PRODUCTS, mProdut.number_of_products)
-            put(ProductEntry.CATEGORY , mProdut.category)
-            put(ProductEntry.UNIT , mProdut.unit)
-            put(ProductEntry.IMAGE , mProdut.image)
+            put(ProductEntry.CATEGORY, mProdut.category)
+            put(ProductEntry.UNIT, mProdut.unit)
+            put(ProductEntry.IMAGE, mProdut.image)
         }
 
         val newRowId = db.insert(ProductEntry.TABLE_NAME, null, prodoctVales)
     }
-
 
     fun readProduct(barcode: String): MutableList<ProductM> {
 
@@ -81,19 +80,21 @@ class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(context
             null,
             null,
             null
-            )
+        )
 
-        while (cursor.moveToNext()){
-            productList.add(ProductM(
-                cursor.getString(1),
-                cursor.getString(2),
-                cursor.getDouble(3),
-                cursor.getDouble(4),
-                cursor.getInt(5),
-                cursor.getString(6),
-                cursor.getString(7),
-                cursor.getBlob(8)
-                ))
+        while (cursor.moveToNext()) {
+            productList.add(
+                ProductM(
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getDouble(3),
+                    cursor.getDouble(4),
+                    cursor.getInt(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getBlob(8)
+                )
+            )
 
 //            val name: String,
 //            val barcode: String,
@@ -107,7 +108,60 @@ class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(context
         return productList
     }
 
+    fun productAllList(): MutableList<ProductM> {
+        val productList = mutableListOf<ProductM>()
 
+        val db = this.readableDatabase
+        val cursor = db.query(
+            ProductEntry.TABLE_NAME,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
 
+        while (cursor.moveToNext()) {
+            productList.add(
+                ProductM(
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getDouble(3),
+                    cursor.getDouble(4),
+                    cursor.getInt(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getBlob(8)
+                )
+            )
+        }
+        return productList
+    }
 
+    fun prodctDelete(barcode: String){
+        val db = this.writableDatabase
+        val whereClause = "${ProductEntry.BARCODE}=?"
+        val whereArgs = arrayOf<String>(java.lang.String.valueOf(barcode))
+        db.delete(ProductEntry.TABLE_NAME, whereClause, whereArgs)
+    }
+
+    fun productUpdate(mProdut: ProductM){
+
+        val db = this.writableDatabase
+        val whereClause = "${ProductEntry.BARCODE}=?"
+        val whereArgs = arrayOf<String>(java.lang.String.valueOf(mProdut.barcode))
+        val prodoctVales = ContentValues().apply {
+            put(ProductEntry.PRODUCT_NAME, mProdut.name)
+            put(ProductEntry.BARCODE, mProdut.barcode)
+            put(ProductEntry.SALE_PRICE, mProdut.sale_price)
+            put(ProductEntry.PURCHASE_PRICE, mProdut.purchase_price)
+            put(ProductEntry.NUMBER_OF_PRODUCTS, mProdut.number_of_products)
+            put(ProductEntry.CATEGORY, mProdut.category)
+            put(ProductEntry.UNIT, mProdut.unit)
+            put(ProductEntry.IMAGE, mProdut.image)
+        }
+
+        db.update(ProductEntry.TABLE_NAME,prodoctVales,whereClause,whereArgs)
+    }
 }

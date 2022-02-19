@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/CardView"
+    android:id="@+id/stock_r_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
@@ -10,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/stock_r_imageview"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ona"/>
@@ -23,11 +25,13 @@
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Title"
+                android:id="@+id/stock_r_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ülker Çikolatalı Gofret"/>
             <TextView
                 style="@style/TextAppearance.AppCompat.Body2"
+                android:id="@+id/stock_r_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="25 adet"/>
