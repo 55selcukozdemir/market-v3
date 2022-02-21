@@ -21,15 +21,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/blue_btn"/>
-
-
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/bottom_r_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ona"/>
@@ -41,6 +34,7 @@
             android:layout_weight="2"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/bottom_r_name"
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:paddingLeft="5dp"
                 android:paddingTop="10dp"
@@ -55,17 +49,20 @@
                 android:layout_weight="1"
                 android:gravity="center">
                 <ImageView
+                    android:id="@+id/bottom_r_more"
                     android:layout_width="40sp"
                     android:layout_height="40sp"
                     android:src="@drawable/less"
                     android:clickable="true"/>
                 <TextView
+                    android:id="@+id/bottom_r_cound"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="1"/>
 
                 <ImageView
+                    android:id="@+id/bottom_r_less"
                     android:layout_width="40sp"
                     android:layout_height="40sp"
                     android:src="@drawable/more"
@@ -82,6 +79,7 @@
             android:gravity="bottom">
 
             <TextView
+                android:id="@+id/bottom_r_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"

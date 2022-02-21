@@ -23,6 +23,7 @@
         android:gravity="center|left">
 
         <TextView
+            android:id="@+id/bottom_sale_price_text"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="5"
@@ -50,6 +51,7 @@
                 app:rippleColor="@color/blue_btn"
                 android:text="veresiye" />
             <Button
+                android:id="@+id/bottom_sale_btn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="80dp"
                 android:layout_height="40sp"

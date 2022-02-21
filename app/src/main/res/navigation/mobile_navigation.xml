@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_speet_sale"
-        android:name="com.example.market2.ui.speetsale.SpeetSaleFragment"
+        android:name="com.egrikiraz.market.ui.speetsale.SpeetSaleFragment"
         android:label="@string/speet_sale"
         tools:layout="@layout/fragment_stock_status" />
 
     <fragment
         android:id="@+id/nav_sales"
-        android:name="com.example.market2.ui.sales.SalesFragment"
+        android:name="com.egrikiraz.market.ui.sales.SalesFragment"
         android:label="@string/menu_sales"
         tools:layout="@layout/fragment_sales" />
 
     <fragment
         android:id="@+id/nav_stock"
-        android:name="com.example.market2.ui.stockstatus.StockStatusFragment"
+        android:name="com.egrikiraz.market.ui.stockstatus.StockStatusFragment"
         android:label="@string/menu_stock"
         tools:layout="@layout/fragment_speet_sale" />
 </navigation>

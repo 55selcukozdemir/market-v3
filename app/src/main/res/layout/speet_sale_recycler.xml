@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/grey_stoke"
     android:layout_margin="5dp"
+    android:id="@+id/speet_sale_g_r_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -13,15 +14,18 @@
         android:padding="10dp"
         android:orientation="vertical">
         <ImageView
+            android:id="@+id/speed_r_image"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@drawable/ona"/>
         <TextView
+            android:id="@+id/speed_r_name"
             style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ülker Çikolatalı Gofret"/>
         <TextView
+            android:id="@+id/speed_r_price"
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

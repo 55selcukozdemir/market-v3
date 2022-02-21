@@ -29,6 +29,7 @@
             android:layout_weight="10"
             android:background="@drawable/grey_stoke"
             android:hint="Barkod"
+            android:inputType="numberSigned"
             android:textSize="14dp" />
 
         <Button
@@ -57,6 +58,7 @@
             android:layout_weight="1"
             android:background="@drawable/grey_stoke"
             android:hint="Satış Fiyatı"
+            android:inputType="numberSigned|numberDecimal"
             android:textSize="14dp" />
 
         <EditText
@@ -67,6 +69,7 @@
             android:layout_weight="1"
             android:background="@drawable/grey_stoke"
             android:hint="Alış Fiyatı"
+            android:inputType="numberSigned|numberDecimal"
             android:textSize="14dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -84,7 +87,8 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:background="@drawable/grey_stoke"
-            android:hint="Ürün Adet"
+            android:text="Ürün Adedi"
+            android:textColor="@color/blue_btn"
             android:textSize="14dp" />
 
         <EditText
@@ -95,6 +99,7 @@
             android:layout_weight="1"
             android:background="@drawable/grey_stoke"
             android:hint="Eklenen Ürün Adeti"
+            android:inputType="numberSigned"
             android:textSize="14dp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -217,7 +222,7 @@
                 android:layout_weight="4"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="Düzenle"
+                android:text="Güncelle"
                 android:textColor="@color/primaryDarkColor"
                 app:rippleColor="@color/primaryDarkColor" />
 
