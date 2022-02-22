@@ -1,18 +1,26 @@
 package com.egrikiraz.market.ui.speetsale.bottom
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.withStateAtLeast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.egrikiraz.market.R
 import com.egrikiraz.market.database.ProductDatabaseDBHelper
+import com.egrikiraz.market.database.SalesDatabaseAdapter
+import com.egrikiraz.market.database.model.SoldM
+import com.egrikiraz.market.database.model.SoldNameM
 import com.egrikiraz.market.ui.speetsale.SpeetSaleFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.log
 
 
 /**
@@ -22,6 +30,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  */
 class SaleBottomSheet(val speetSaleFragment: SpeetSaleFragment) : BottomSheetDialogFragment(){
 
+    private  val TAG = "SaleBottomSheet"
     lateinit var saleButton : Button
     lateinit var price : TextView
     lateinit var db: ProductDatabaseDBHelper
@@ -51,10 +60,37 @@ class SaleBottomSheet(val speetSaleFragment: SpeetSaleFragment) : BottomSheetDia
         saleButton.setOnClickListener {
             this.dismiss()
 
+            val uuid = UUID.randomUUID().toString()
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+            val currentDate = sdf.format(Date())
 
 
+            val soldMList = mutableListOf<SoldM>()
+            var totalPrice = 0.0
+            for (salem in db.saleAllList()){
 
+                soldMList.add(
+                    SoldM(
+                    salem.name,
+                    salem.barcode,
+                    salem.sale_price,
+                    salem.purchase_price,
+                    salem.number_of_products,
+                    salem.category,
+                    salem.unit,
+                    salem.image,
+                    salem.size,
+                    uuid
+                    )
+                )
 
+                totalPrice += salem.sale_price * salem.size
+            }
+
+            val soldNameM = SoldNameM(currentDate,totalPrice.toString(), uuid)
+
+            val saleDB = SalesDatabaseAdapter(this.context)
+            saleDB.putProduct(soldMList, soldNameM)
             db.deleteSale()
 
         }

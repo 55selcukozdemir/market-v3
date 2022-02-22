@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager
 import com.egrikiraz.market.R
 import com.egrikiraz.market.ScannerActivity
 import com.egrikiraz.market.adapter.CollectionPagerAdapter
+import com.egrikiraz.market.database.ProductDatabaseDBHelper
 import com.egrikiraz.market.database.model.ProductM
 import com.egrikiraz.market.databinding.FragmentSpeetSaleBinding
 import com.egrikiraz.market.ui.speetsale.bottom.SaleBottomSheet
@@ -28,6 +29,7 @@ class SpeetSaleFragment : Fragment() {
     private lateinit var mFragment: CollectionPagerAdapter
     private lateinit var viewPager: ViewPager
     private lateinit var homeViewModel:SpeetSaleViewModel
+    private lateinit var db : ProductDatabaseDBHelper
 
 
 
@@ -45,6 +47,8 @@ class SpeetSaleFragment : Fragment() {
         val root: View = binding.root
 
         setHasOptionsMenu(true)
+
+        db = ProductDatabaseDBHelper(context)
 
 
         viewPager = binding.viewpager
@@ -107,22 +111,24 @@ class SpeetSaleFragment : Fragment() {
         _binding = null
     }
 
-    override fun onStart() {
+    override fun onResume() {
+        super.onResume()
         adapterRefresh()
-
         if (buttonClick.barcode != ""){
             binding.speedABarcode.setText(buttonClick.barcode)
             buttonClick.barcode = ""
         }
-        super.onStart()
+
+
     }
+
 
     fun adapterRefresh(){
         mFragment.deleteFrag()
         val category = resources.getStringArray(R.array.array_catecory)
         for (ct in category){
             val list = ArrayList<ProductM>()
-            for (product in homeViewModel.getProduct()){
+            for (product in db.productAllList()){
                 if (product.category == ct){
                     list.add(product)
                 }
@@ -143,10 +149,10 @@ class SpeetSaleFragment : Fragment() {
         val productFilterList = ArrayList<ProductM>()
         productFilterList.clear()
         if (contain == null || contain.isEmpty()){
-            productFilterList.addAll(homeViewModel.getProduct())
+            productFilterList.addAll(db.productAllList())
         } else {
             val query = contain.trim().toLowerCase()
-            homeViewModel.getProduct().forEach { productM ->
+            db.productAllList().forEach { productM ->
                 if (productM.name.toLowerCase(Locale.ROOT).contains(query)){
                     productFilterList.add(productM)
                 }
@@ -171,15 +177,14 @@ class SpeetSaleFragment : Fragment() {
 
     fun getBarcodFilter(contain : String?){
 
-
         mFragment.deleteFrag()
         val productFilterList = ArrayList<ProductM>()
         productFilterList.clear()
         if (contain == null || contain.isEmpty()){
-            productFilterList.addAll(homeViewModel.getProduct())
+            productFilterList.addAll(db.productAllList())
         } else {
             val query = contain.trim().toLowerCase()
-            homeViewModel.getProduct().forEach { productM ->
+            db.productAllList().forEach { productM ->
                 if (productM.barcode.toLowerCase(Locale.ROOT).contains(query)){
                     productFilterList.add(productM)
                 }

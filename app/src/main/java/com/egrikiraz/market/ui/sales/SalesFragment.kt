@@ -7,14 +7,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.egrikiraz.market.R
+import com.egrikiraz.market.database.SalesDatabaseAdapter
+import com.egrikiraz.market.database.model.SoldM
+import com.egrikiraz.market.database.model.SoldNameM
 import com.egrikiraz.market.databinding.FragmentSalesBinding
 
 class SalesFragment : Fragment() {
 
     private var _binding: FragmentSalesBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    lateinit var soldDb : SalesDatabaseAdapter
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,19 +30,14 @@ class SalesFragment : Fragment() {
 
         _binding = FragmentSalesBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         setHasOptionsMenu(true)
 
-
-        //val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            //textView.text = it
-        }
-
         val recycleradapter = binding.salesRecycler
-        recycleradapter.layoutManager =
-            GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
-        recycleradapter.adapter = SalesRecyclerAdapter()
+        recycleradapter.layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
+        soldDb = SalesDatabaseAdapter(this.context)
+
+        recycleradapter.adapter = SalesRecyclerAdapter(soldDb.getSalesName())
+
 
         return root
     }
@@ -70,5 +68,10 @@ class SalesFragment : Fragment() {
 
 
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        soldDb.close()
     }
 }

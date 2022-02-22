@@ -19,9 +19,6 @@ class SpeetSaleViewModel(application: Application) : AndroidViewModel(applicatio
     val texty: LiveData<Int> = _textt
 
 
-    val db = ProductDatabaseDBHelper(application.applicationContext)
 
-    fun getProduct(): MutableList<ProductM> {
-        return db.productAllList()
-    }
+
 }

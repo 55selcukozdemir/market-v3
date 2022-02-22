@@ -10,8 +10,7 @@ import com.egrikiraz.market.database.model.ProductM
 import com.egrikiraz.market.database.model.SaleM
 import com.egrikiraz.market.database.model.saleEntry
 
-class ProductDatabaseDBHelper(val contexts: Context?) :
-    SQLiteOpenHelper(contexts, DATABASE_NAME, null, DATABASE_VERSION) {
+class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(contexts, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         const val DATABASE_VERSION = 3
