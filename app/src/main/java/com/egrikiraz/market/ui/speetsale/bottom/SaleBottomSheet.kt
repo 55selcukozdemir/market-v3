@@ -93,7 +93,12 @@ class SaleBottomSheet(val speetSaleFragment: SpeetSaleFragment) : BottomSheetDia
             saleDB.putProduct(soldMList, soldNameM)
             db.deleteSale()
 
+            saleNameChange("")
+            salePriceChange("Sipariş Özeti : 0.0")
+
         }
+
+
 
         return view
     }

@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,12 +15,19 @@ import androidx.core.graphics.drawable.toBitmap
 import com.egrikiraz.market.R
 import com.egrikiraz.market.ScannerActivity
 import com.egrikiraz.market.database.ProductDatabaseDBHelper
+import com.egrikiraz.market.database.model.ProductEntry
 import com.egrikiraz.market.database.model.ProductM
 import com.egrikiraz.market.ui.speetsale.buttonClick
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
 
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 class ProductAddActivity : AppCompatActivity() {
     private val TAG = "ProductAddActivity"
@@ -43,7 +51,8 @@ class ProductAddActivity : AppCompatActivity() {
     lateinit var update_btn: Button //Güncelle Butonu
 
     lateinit var db: ProductDatabaseDBHelper
-    lateinit var firestore: FirebaseStorage
+    lateinit var storage: FirebaseStorage
+    lateinit var firestore: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_add)
@@ -70,13 +79,16 @@ class ProductAddActivity : AppCompatActivity() {
         //----------------------------------------------------------------------------------
         spinner()
 
+        storage = Firebase.storage
+        firestore = Firebase.firestore
+
         //Ürün düzenlerken recycler view dan gelen barkoddan sqliteden verilerin tamamını çekiyoruz.
         db = ProductDatabaseDBHelper(this)
         startedDB()
 
 
         //Butonların işlevlerinin atandığı kısımdır.
-        add_btn.setOnClickListener(View.OnClickListener { add() })
+        add_btn.setOnClickListener(View.OnClickListener { fireAdd() })
 
         get_btn.setOnClickListener(View.OnClickListener { get() })
 
@@ -119,7 +131,7 @@ class ProductAddActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (buttonClick.barcode != ""){
+        if (buttonClick.barcode != "") {
             barcod_t.setText(buttonClick.barcode)
             buttonClick.barcode = ""
         }
@@ -147,8 +159,9 @@ class ProductAddActivity : AppCompatActivity() {
 
 
     fun delete() {
-        if(db.readProduct(barcod_t.text.toString()).isEmpty()){
-            Toast.makeText(this, "Bu barkoda sahip ürün yoktur ve silinemez.", Toast.LENGTH_SHORT).show()
+        if (db.readProduct(barcod_t.text.toString()).isEmpty()) {
+            Toast.makeText(this, "Bu barkoda sahip ürün yoktur ve silinemez.", Toast.LENGTH_SHORT)
+                .show()
         } else {
             db.prodctDelete(barcod_t.text.toString())
             onBackPressed()
@@ -159,7 +172,7 @@ class ProductAddActivity : AppCompatActivity() {
     fun get() {
         val urunler = db.readProduct(barcod_t.text.toString())
 
-        if (urunler.isEmpty()){
+        if (urunler.isEmpty()) {
             Toast.makeText(this, "Bu barkoda sahip bir ürün yokur.", Toast.LENGTH_SHORT).show()
         } else {
             for (u in urunler) {
@@ -190,9 +203,11 @@ class ProductAddActivity : AppCompatActivity() {
                 }
             }
         }
- 
+
     }
 
+
+// şuanlık kullanılmıyor
     fun add() {
         val bitmap = imageView.drawable.toBitmap()
         val bos = ByteArrayOutputStream()
@@ -286,7 +301,8 @@ class ProductAddActivity : AppCompatActivity() {
                                 barcod_t.text.toString(),
                                 sale_price_t.text.toString().toDouble(),
                                 purchase_price_t.text.toString().toDouble(),
-                                add_product_t.text.toString().toInt() + existings.number_of_products,
+                                add_product_t.text.toString()
+                                    .toInt() + existings.number_of_products,
                                 spinner1.selectedItem.toString(),
                                 spinner2.selectedItem.toString(),
                                 img
@@ -297,7 +313,8 @@ class ProductAddActivity : AppCompatActivity() {
                 onBackPressed()
             }
         } else {
-            Toast.makeText(applicationContext, "Boş kısımları doldurunuz.", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Boş kısımları doldurunuz.", Toast.LENGTH_LONG)
+                .show()
         }
 
     }
@@ -361,6 +378,66 @@ class ProductAddActivity : AppCompatActivity() {
         })
 
         builder.show()
+    }
+
+    fun fireAdd() {
+
+        if (!name_t.text.isEmpty() &&
+            !barcod_t.text.isEmpty() &&
+            !sale_price_t.text.isEmpty() &&
+            !purchase_price_t.text.isEmpty() &&
+            !add_product_t.text.isEmpty()
+        ) {
+
+            val storageRef = FirebaseStorage.getInstance().reference
+
+            imageView.isDrawingCacheEnabled = true
+            imageView.buildDrawingCache()
+            val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val baos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val dataq = baos.toByteArray()
+
+            storageRef.child("${UUID.randomUUID()}.jpg").putBytes(dataq).addOnSuccessListener { taskSnapshot ->
+
+            }.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val downloadUri = "task.result"
+                    val data = hashMapOf(
+                        ProductEntry.PRODUCT_NAME to name_t.text.toString(),
+                        ProductEntry.BARCODE to barcod_t.text.toString(),
+                        ProductEntry.SALE_PRICE to sale_price_t.text.toString(),
+                        ProductEntry.PURCHASE_PRICE to purchase_price_t.text.toString(),
+                        ProductEntry.NUMBER_OF_PRODUCTS to add_product_t.text.toString(),
+                        ProductEntry.CATEGORY to spinner1.selectedItem.toString(),
+                        ProductEntry.UNIT to spinner2.selectedItem.toString(),
+                        "url" to downloadUri
+                    )
+                    firestore.collection("product").add(data).addOnSuccessListener {
+                        Toast.makeText(
+                            applicationContext,
+                            "Sunucuya başarıyla gönderildi ${downloadUri}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        onBackPressed()
+                    }
+
+
+
+
+                } else {
+                    // Handle failures
+                    // ...
+                }
+            }
+
+        } else {
+            Toast.makeText(applicationContext, "Boş kısımları doldurunuz.", Toast.LENGTH_LONG)
+                .show()
+        }
+
+
     }
 
 }

@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.*
+import android.widget.EditText
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +22,7 @@ import com.egrikiraz.market.ui.speetsale.bottom.SaleBottomSheet
 import com.egrikiraz.market.ui.speetsale.productsale.SaleGridFragment
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.log
 
 class SpeetSaleFragment : Fragment() {
 
@@ -77,7 +80,7 @@ class SpeetSaleFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                getBarcodFilter(p0.toString())
+                    getBarcodFilter(p0.toString())
             }
 
         })
@@ -213,8 +216,8 @@ class SpeetSaleFragment : Fragment() {
     fun saleNameChange(text: String){
         binding.speedName.text = text
     }
-    fun saleBarcodeTextClear(){
-        binding.speedABarcode.setText("")
+    fun saleBarcodeTextClear(): EditText{
+       return binding.speedABarcode
     }
 
     @SuppressLint("ResourceAsColor")

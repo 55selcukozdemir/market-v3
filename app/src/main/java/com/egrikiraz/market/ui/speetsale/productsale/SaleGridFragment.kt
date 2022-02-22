@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.egrikiraz.market.R
@@ -42,8 +43,8 @@ class SaleGridFragment (val productList: ArrayList<ProductM>, private val speetS
         speetSaleFragment.buttonDefauld()
     }
 
-    fun barcodeTextClear(){
-        speetSaleFragment.saleBarcodeTextClear()
+    fun barcodeTextClear(): EditText {
+        return speetSaleFragment.saleBarcodeTextClear()
     }
 
 

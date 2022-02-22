@@ -75,9 +75,11 @@ class RecyclerSpeetSaleAdapter(val productDataList: ArrayList<ProductM>, private
                     totalPrice += saleList.sale_price * saleList.size
                 }
                 saleGridFragment.nameTextChane(productDataList.get(position).name)
-                saleGridFragment.priceTextChange(totalPrice.toString())
+                saleGridFragment.priceTextChange("Sipariş Özeti : ${totalPrice.toString()}")
                 saleGridFragment.buttonDefauld()
-                saleGridFragment.barcodeTextClear()
+                if (saleGridFragment.barcodeTextClear().text.toString() != ""){
+                    saleGridFragment.barcodeTextClear().setText("")
+                }
 
 
             } else {
@@ -99,10 +101,13 @@ class RecyclerSpeetSaleAdapter(val productDataList: ArrayList<ProductM>, private
                     totalPrice += saleList.sale_price * saleList.size
                 }
 
-                saleGridFragment.priceTextChange(totalPrice.toString())
+                saleGridFragment.priceTextChange("Sipariş Özeti : ${totalPrice.toString()}")
                 saleGridFragment.nameTextChane(productDataList.get(position).name)
                 saleGridFragment.buttonDefauld()
-                saleGridFragment.barcodeTextClear()
+                if (saleGridFragment.barcodeTextClear().text.toString() != ""){
+                    saleGridFragment.barcodeTextClear().setText("")
+                }
+
 
             }
 

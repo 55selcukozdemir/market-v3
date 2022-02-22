@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+import android.util.Log
 import com.egrikiraz.market.database.model.ProductEntry
 import com.egrikiraz.market.database.model.ProductM
 import com.egrikiraz.market.database.model.SaleM
@@ -79,8 +80,7 @@ class ProductDatabaseDBHelper(val contexts: Context?) : SQLiteOpenHelper(context
             put(ProductEntry.UNIT, mProdut.unit)
             put(ProductEntry.IMAGE, mProdut.image)
         }
-
-        val newRowId = db.insert(ProductEntry.TABLE_NAME, null, prodoctVales)
+        db.insert(ProductEntry.TABLE_NAME, null, prodoctVales)
     }
 
     fun readProduct(barcode: String): MutableList<ProductM> {

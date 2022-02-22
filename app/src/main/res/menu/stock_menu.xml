@@ -6,6 +6,11 @@
         android:orderInCategory="100"
         android:title="@string/product_add"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/stock_fire"
+        android:orderInCategory="100"
+        android:title="Verileri Güncelle"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/stock_search"
