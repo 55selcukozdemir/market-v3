@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.graphics.drawable.toBitmap
@@ -19,6 +20,7 @@ import com.egrikiraz.market.database.model.ProductEntry
 import com.egrikiraz.market.database.model.ProductM
 import com.egrikiraz.market.ui.speetsale.buttonClick
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -53,6 +55,8 @@ class ProductAddActivity : AppCompatActivity() {
     lateinit var db: ProductDatabaseDBHelper
     lateinit var storage: FirebaseStorage
     lateinit var firestore: FirebaseFirestore
+    lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_add)
@@ -81,14 +85,13 @@ class ProductAddActivity : AppCompatActivity() {
 
         storage = Firebase.storage
         firestore = Firebase.firestore
-
         //Ürün düzenlerken recycler view dan gelen barkoddan sqliteden verilerin tamamını çekiyoruz.
         db = ProductDatabaseDBHelper(this)
         startedDB()
 
 
         //Butonların işlevlerinin atandığı kısımdır.
-        add_btn.setOnClickListener(View.OnClickListener { fireAdd() })
+        add_btn.setOnClickListener(View.OnClickListener { add()})
 
         get_btn.setOnClickListener(View.OnClickListener { get() })
 
@@ -382,6 +385,8 @@ class ProductAddActivity : AppCompatActivity() {
 
     fun fireAdd() {
 
+
+
         if (!name_t.text.isEmpty() &&
             !barcod_t.text.isEmpty() &&
             !sale_price_t.text.isEmpty() &&
@@ -400,35 +405,28 @@ class ProductAddActivity : AppCompatActivity() {
 
             storageRef.child("${UUID.randomUUID()}.jpg").putBytes(dataq).addOnSuccessListener { taskSnapshot ->
 
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = "task.result"
-                    val data = hashMapOf(
-                        ProductEntry.PRODUCT_NAME to name_t.text.toString(),
-                        ProductEntry.BARCODE to barcod_t.text.toString(),
-                        ProductEntry.SALE_PRICE to sale_price_t.text.toString(),
-                        ProductEntry.PURCHASE_PRICE to purchase_price_t.text.toString(),
-                        ProductEntry.NUMBER_OF_PRODUCTS to add_product_t.text.toString(),
-                        ProductEntry.CATEGORY to spinner1.selectedItem.toString(),
-                        ProductEntry.UNIT to spinner2.selectedItem.toString(),
-                        "url" to downloadUri
-                    )
-                    firestore.collection("product").add(data).addOnSuccessListener {
-                        Toast.makeText(
-                            applicationContext,
-                            "Sunucuya başarıyla gönderildi ${downloadUri}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                Log.d(TAG, "fireAdd: ${taskSnapshot.metadata?.reference?.downloadUrl}")
 
-                        onBackPressed()
-                    }
+                val data = hashMapOf(
+                    ProductEntry.PRODUCT_NAME to name_t.text.toString(),
+                    ProductEntry.BARCODE to barcod_t.text.toString(),
+                    ProductEntry.SALE_PRICE to sale_price_t.text.toString(),
+                    ProductEntry.PURCHASE_PRICE to purchase_price_t.text.toString(),
+                    ProductEntry.NUMBER_OF_PRODUCTS to add_product_t.text.toString(),
+                    ProductEntry.CATEGORY to spinner1.selectedItem.toString(),
+                    ProductEntry.UNIT to spinner2.selectedItem.toString(),
+                    "url" to taskSnapshot.storage.downloadUrl
+                )
+                firestore.collection("product").add(data).addOnSuccessListener {
+                    Toast.makeText(
+                        applicationContext,
+                        "Sunucuya başarıyla gönderildi ",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    onBackPressed()
 
 
-
-
-                } else {
-                    // Handle failures
-                    // ...
                 }
             }
 
@@ -438,6 +436,22 @@ class ProductAddActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    fun deneme(){
+
+        imageView.isDrawingCacheEnabled = true
+        imageView.buildDrawingCache()
+        val bitmap = (imageView.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val dataq = baos.toByteArray()
+
+
+        storage.reference.child("fdksmfkds.jpg").putBytes(dataq).addOnSuccessListener {
+            Log.d(TAG, "deneme: görsel yüklendi")
+            Log.d(TAG, it.storage.downloadUrl.toString())
+        }
     }
 
 }
