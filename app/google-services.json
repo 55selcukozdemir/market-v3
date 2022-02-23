@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "218917919240",
+    "project_id": "marketing-ad13e",
+    "storage_bucket": "marketing-ad13e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218917919240:android:c66fa86432d2eb0fea0fbd",
+        "android_client_info": {
+          "package_name": "com.egrikiraz.market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218917919240-1cpa53ds0blh9oqoadslt3lmgb20ghgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgCrMh_fW9VA_s_ZgyxfzYcaWAH8We1kM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218917919240-1cpa53ds0blh9oqoadslt3lmgb20ghgl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
